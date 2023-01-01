@@ -1,0 +1,6 @@
+numpy==1.24.1
+xarray==2022.12.0
+pandas==1.5.2
+matplotlib==3.6.2
+rioxarray==0.13.3
+geopandas==0.12.2

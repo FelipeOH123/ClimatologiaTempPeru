@@ -11,8 +11,8 @@ from masking import xr_shp_to_grid, xr_mask
 from dates import get_first_date_of_current_month, get_last_date_of_month
 
 
-shp_Peru = gpd_read_file('C:/Users/FELIPEOH/ClimatoTempPeru/data/shps/Departamentos.shp')
-ERA_files = sorted(glb.glob("C:/Users/FELIPEOH/ClimatoTempPeru/data/ERA5land/2m_temperature/*nc"))
+shp_Peru = gpd_read_file('C:/Users/FELIPEOH/ClimatologiaTempPeru/data/shps/Departamentos.shp')
+ERA_files = sorted(glb.glob("C:/Users/FELIPEOH/ClimatologiaTempPeru/data/ERA5land/2m_temperature/*nc"))
 
 #ERA5land (tx:temperatura máxima)
 ERA5_files = []
@@ -38,7 +38,7 @@ ERA5tx_prom_ver = (ERA5tx_season_prom.sel(season="DJF"))
 fig, ax = plt.subplots(figsize=(12,12))
 shp_Peru.boundary.plot(ax=ax,edgecolor='black',linewidth=0.1)
 pl = ERA5tx_prom_ver.plot.contourf()
-plt.savefig("C:/Users/FELIPEOH/ClimatoTempPeru/outputs/ERA5tx_prom_ver.png")
+plt.savefig("C:/Users/FELIPEOH/ClimatologiaTempPeru/outputs/ERA5tx_prom_ver.png")
 
 ###Desviación estándar
 ERA5tx_season_sd = ERA5tx_masked.groupby("time.season").std("time")
@@ -46,7 +46,7 @@ ERA5tx_sd_ver = (ERA5tx_season_sd.sel(season="DJF"))
 fig, ax = plt.subplots(figsize=(12,12))
 shp_Peru.boundary.plot(ax=ax,edgecolor='black',linewidth=0.1)
 pl = ERA5tx_sd_ver.plot.contourf()
-plt.savefig("C:/Users/FELIPEOH/ClimatoTempPeru/outputs/ERA5tx_sd_ver.png")
+plt.savefig("C:/Users/FELIPEOH/ClimatologiaTempPeru/outputs/ERA5tx_sd_ver.png")
 
 ###Coeficiente de asimetria
 ERA5tx_season_md = ERA5tx_masked.groupby("time.season").median("time")
@@ -55,7 +55,7 @@ ERA5tx_ac_ver = (3*(ERA5tx_prom_ver-ERA5tx_md_ver))/ERA5tx_sd_ver
 fig, ax = plt.subplots(figsize=(12,12))
 shp_Peru.boundary.plot(ax=ax,edgecolor='black',linewidth=0.1)
 pl = ERA5tx_ac_ver.plot.contourf()
-plt.savefig("C:/Users/FELIPEOH/ClimatoTempPeru/outputs/ERA5tx_ac_ver.png")
+plt.savefig("C:/Users/FELIPEOH/ClimatologiaTempPeru/outputs/ERA5tx_ac_ver.png")
 
 ###Percentil 5
 ERA5tx_season_p5 = ERA5tx_masked.groupby("time.season").quantile(0.05, "time")
@@ -63,7 +63,7 @@ ERA5tx_p5_ver = (ERA5tx_season_p5.sel(season="DJF"))
 fig, ax = plt.subplots(figsize=(12,12))
 shp_Peru.boundary.plot(ax=ax,edgecolor='black',linewidth=0.1)
 pl = ERA5tx_p5_ver.plot.contourf()
-plt.savefig("C:/Users/FELIPEOH/ClimatoTempPeru/outputs/ERA5tx_p5_ver.png")
+plt.savefig("C:/Users/FELIPEOH/ClimatologiaTempPeru/outputs/ERA5tx_p5_ver.png")
 
 ###Percentil95
 ERA5tx_season_p95 = ERA5tx_masked.groupby("time.season").quantile(0.95, "time")
@@ -71,7 +71,7 @@ ERA5tx_p95_ver = (ERA5tx_season_p95.sel(season="DJF"))
 fig, ax = plt.subplots(figsize=(12,12))
 shp_Peru.boundary.plot(ax=ax,edgecolor='black',linewidth=0.1)
 pl = ERA5tx_p95_ver.plot.contourf()
-plt.savefig("C:/Users/FELIPEOH/ClimatoTempPeru/outputs/ERA5tx_p95_ver.png")
+plt.savefig("C:/Users/FELIPEOH/ClimatologiaTempPeru/outputs/ERA5tx_p95_ver.png")
 
 ##Invierno
 ###Promedio
@@ -79,14 +79,14 @@ ERA5tx_prom_inv = (ERA5tx_season_prom.sel(season="JJA"))
 fig, ax = plt.subplots(figsize=(12,12))
 shp_Peru.boundary.plot(ax=ax,edgecolor='black',linewidth=0.1)
 pl = ERA5tx_prom_inv.plot.contourf()
-plt.savefig("C:/Users/FELIPEOH/ClimatoTempPeru/outputs/ERA5tx_prom_inv.png")
+plt.savefig("C:/Users/FELIPEOH/ClimatologiaTempPeru/outputs/ERA5tx_prom_inv.png")
 
 ###Desviación estandar
 ERA5tx_sd_inv = (ERA5tx_season_sd.sel(season="JJA"))
 fig, ax = plt.subplots(figsize=(12,12))
 shp_Peru.boundary.plot(ax=ax,edgecolor='black',linewidth=0.1)
 pl = ERA5tx_sd_inv.plot.contourf()
-plt.savefig("C:/Users/FELIPEOH/ClimatoTempPeru/outputs/ERA5tx_sd_inv.png")
+plt.savefig("C:/Users/FELIPEOH/ClimatologiaTempPeru/outputs/ERA5tx_sd_inv.png")
 
 ###Coeficiente de asimetria
 ERA5tx_md_inv = (ERA5tx_season_sd.sel(season="JJA"))
@@ -94,21 +94,21 @@ ERA5tx_ac_inv = (3*(ERA5tx_prom_inv-ERA5tx_md_inv))/ERA5tx_sd_inv
 fig, ax = plt.subplots(figsize=(12,12))
 shp_Peru.boundary.plot(ax=ax,edgecolor='black',linewidth=0.1)
 pl = ERA5tx_ac_inv.plot.contourf()
-plt.savefig("C:/Users/FELIPEOH/ClimatoTempPeru/outputs/ERA5tx_ac_inv.png")
+plt.savefig("C:/Users/FELIPEOH/ClimatologiaTempPeru/outputs/ERA5tx_ac_inv.png")
 
 ###Percentil 5
 ERA5tx_p5_inv = (ERA5tx_season_p5.sel(season="JJA"))
 fig, ax = plt.subplots(figsize=(12,12))
 shp_Peru.boundary.plot(ax=ax,edgecolor='black',linewidth=0.1)
 pl = ERA5tx_p5_inv.plot.contourf()
-plt.savefig("C:/Users/FELIPEOH/ClimatoTempPeru/outputs/ERA5tx_p5_inv.png")
+plt.savefig("C:/Users/FELIPEOH/ClimatologiaTempPeru/outputs/ERA5tx_p5_inv.png")
 
 ###Percentil95
 ERA5tx_p95_inv = (ERA5tx_season_p95.sel(season="JJA"))
 fig, ax = plt.subplots(figsize=(12,12))
 shp_Peru.boundary.plot(ax=ax,edgecolor='black',linewidth=0.1)
 pl = ERA5tx_p95_inv.plot.contourf()
-plt.savefig("C:/Users/FELIPEOH/ClimatoTempPeru/outputs/ERA5tx_p95_inv.png")
+plt.savefig("C:/Users/FELIPEOH/ClimatologiaTempPeru/outputs/ERA5tx_p95_inv.png")
 
 #ERA5land (tn:temperatura mínima)
 ERA5_files = []
@@ -134,7 +134,7 @@ ERA5tn_prom_ver = (ERA5tn_season_prom.sel(season="DJF"))
 fig, ax = plt.subplots(figsize=(12,12))
 shp_Peru.boundary.plot(ax=ax,edgecolor='black',linewidth=0.1)
 pl = ERA5tn_prom_ver.plot.contourf()
-plt.savefig("C:/Users/FELIPEOH/ClimatoTempPeru/outputs/ERA5tn_prom_ver.png")
+plt.savefig("C:/Users/FELIPEOH/ClimatologiaTempPeru/outputs/ERA5tn_prom_ver.png")
 
 ###Desviación estándar
 ERA5tn_season_sd = ERA5tn_masked.groupby("time.season").std("time")
@@ -142,7 +142,7 @@ ERA5tn_sd_ver = (ERA5tn_season_sd.sel(season="DJF"))
 fig, ax = plt.subplots(figsize=(12,12))
 shp_Peru.boundary.plot(ax=ax,edgecolor='black',linewidth=0.1)
 pl = ERA5tn_sd_ver.plot.contourf()
-plt.savefig("C:/Users/FELIPEOH/ClimatoTempPeru/outputs/ERA5tn_sd_ver.png")
+plt.savefig("C:/Users/FELIPEOH/ClimatologiaTempPeru/outputs/ERA5tn_sd_ver.png")
 
 ###Coeficiente de asimetria
 ERA5tn_season_md = ERA5tn_masked.groupby("time.season").median("time")
@@ -151,7 +151,7 @@ ERA5tn_ac_ver = (3*(ERA5tn_prom_ver-ERA5tn_md_ver))/ERA5tn_sd_ver
 fig, ax = plt.subplots(figsize=(12,12))
 shp_Peru.boundary.plot(ax=ax,edgecolor='black',linewidth=0.1)
 pl = ERA5tn_ac_ver.plot.contourf()
-plt.savefig("C:/Users/FELIPEOH/ClimatoTempPeru/outputs/ERA5tn_ac_ver.png")
+plt.savefig("C:/Users/FELIPEOH/ClimatologiaTempPeru/outputs/ERA5tn_ac_ver.png")
 
 ###Percentil 5
 ERA5tn_season_p5 = ERA5tn_masked.groupby("time.season").quantile(0.05, "time")
@@ -159,7 +159,7 @@ ERA5tn_p5_ver = (ERA5tn_season_p5.sel(season="DJF"))
 fig, ax = plt.subplots(figsize=(12,12))
 shp_Peru.boundary.plot(ax=ax,edgecolor='black',linewidth=0.1)
 pl = ERA5tn_p5_ver.plot.contourf()
-plt.savefig("C:/Users/FELIPEOH/ClimatoTempPeru/outputs/ERA5tn_p5_ver.png")
+plt.savefig("C:/Users/FELIPEOH/ClimatologiaTempPeru/outputs/ERA5tn_p5_ver.png")
 
 ###Percentil 95
 ERA5tn_season_p95 = ERA5tn_masked.groupby("time.season").quantile(0.95, "time")
@@ -167,7 +167,7 @@ ERA5tn_p95_ver = (ERA5tn_season_p95.sel(season="DJF"))
 fig, ax = plt.subplots(figsize=(12,12))
 shp_Peru.boundary.plot(ax=ax,edgecolor='black',linewidth=0.1)
 pl = ERA5tn_p95_ver.plot.contourf()
-plt.savefig("C:/Users/FELIPEOH/ClimatoTempPeru/outputs/ERA5tn_p95_ver.png")
+plt.savefig("C:/Users/FELIPEOH/ClimatologiaTempPeru/outputs/ERA5tn_p95_ver.png")
 
 ##Invierno
 ###Promedio
@@ -175,14 +175,14 @@ ERA5tn_prom_inv = (ERA5tn_season_prom.sel(season="JJA"))
 fig, ax = plt.subplots(figsize=(12,12))
 shp_Peru.boundary.plot(ax=ax,edgecolor='black',linewidth=0.1)
 pl = ERA5tn_prom_inv.plot.contourf()
-plt.savefig("C:/Users/FELIPEOH/ClimatoTempPeru/outputs/ERA5tn_prom_inv.png")
+plt.savefig("C:/Users/FELIPEOH/ClimatologiaTempPeru/outputs/ERA5tn_prom_inv.png")
 
 ###Desviación estándar
 ERA5tn_sd_inv = (ERA5tn_season_sd.sel(season="JJA"))
 fig, ax = plt.subplots(figsize=(12,12))
 shp_Peru.boundary.plot(ax=ax,edgecolor='black',linewidth=0.1)
 pl = ERA5tn_sd_inv.plot.contourf()
-plt.savefig("C:/Users/FELIPEOH/ClimatoTempPeru/outputs/ERA5tn_sd_inv.png")
+plt.savefig("C:/Users/FELIPEOH/ClimatologiaTempPeru/outputs/ERA5tn_sd_inv.png")
 
 ###Coeficiente de asimetria
 ERA5tn_md_inv = (ERA5tn_season_sd.sel(season="JJA"))
@@ -190,21 +190,21 @@ ERA5tn_ac_inv = (3*(ERA5tn_prom_inv-ERA5tn_md_inv))/ERA5tn_sd_inv
 fig, ax = plt.subplots(figsize=(12,12))
 shp_Peru.boundary.plot(ax=ax,edgecolor='black',linewidth=0.1)
 pl = ERA5tn_ac_inv.plot.contourf()
-plt.savefig("C:/Users/FELIPEOH/ClimatoTempPeru/outputs/ERA5tn_ac_inv.png")
+plt.savefig("C:/Users/FELIPEOH/ClimatologiaTempPeru/outputs/ERA5tn_ac_inv.png")
 
 ###Percentil 5
 ERA5tn_p5_inv = (ERA5tn_season_p5.sel(season="JJA"))
 fig, ax = plt.subplots(figsize=(12,12))
 shp_Peru.boundary.plot(ax=ax,edgecolor='black',linewidth=0.1)
 pl = ERA5tn_p5_inv.plot.contourf()
-plt.savefig("C:/Users/FELIPEOH/ClimatoTempPeru/outputs/ERA5tn_p5_inv.png")
+plt.savefig("C:/Users/FELIPEOH/ClimatologiaTempPeru/outputs/ERA5tn_p5_inv.png")
 
 ###Percentil 95
 ERA5tn_p95_inv = (ERA5tn_season_p95.sel(season="JJA"))
 fig, ax = plt.subplots(figsize=(12,12))
 shp_Peru.boundary.plot(ax=ax,edgecolor='black',linewidth=0.1)
 pl = ERA5tn_p95_inv.plot.contourf()
-plt.savefig("C:/Users/FELIPEOH/ClimatoTempPeru/outputs/ERA5tn_p95_inv.png")
+plt.savefig("C:/Users/FELIPEOH/ClimatologiaTempPeru/outputs/ERA5tn_p95_inv.png")
 
 #ERA5land (tm:temperatura media)
 ERA5tm_masked = (ERA5tx_masked+ERA5tn_masked)/2
@@ -236,7 +236,7 @@ ERA5tn_por_ver = xr.concat(ERA5tn_por_files, dim="time")
 fig, ax = plt.subplots(figsize=(12,12))
 shp_Peru.boundary.plot(ax=ax,edgecolor='black',linewidth=0.1)
 pl = xr.corr(ERA5tn_por_ver, ERA5tm_mean_s_ver, dim="time").plot.contourf()
-plt.savefig("C:/Users/FELIPEOH/ClimatoTempPeru/outputs/ERA5tm_%minp5_ver.png")
+plt.savefig("C:/Users/FELIPEOH/ClimatologiaTempPeru/outputs/ERA5tm_%minp5_ver.png")
 
 ###%max>p95
 ERA5tx_por_files = []
@@ -250,7 +250,7 @@ ERA5tx_por_ver = xr.concat(ERA5tx_por_files, dim="time")
 fig, ax = plt.subplots(figsize=(12,12))
 shp_Peru.boundary.plot(ax=ax,edgecolor='black',linewidth=0.1)
 pl = xr.corr(ERA5tx_por_ver, ERA5tm_mean_s_ver, dim="time").plot.contourf()
-plt.savefig("C:/Users/FELIPEOH/ClimatoTempPeru/outputs/ERA5tm_%maxp95_ver.png")
+plt.savefig("C:/Users/FELIPEOH/ClimatologiaTempPeru/outputs/ERA5tm_%maxp95_ver.png")
 
 ##Invierno
 fechas = []
@@ -277,7 +277,7 @@ ERA5tn_por_inv = xr.concat(ERA5tn_por_files, dim="time")
 fig, ax = plt.subplots(figsize=(12,12))
 shp_Peru.boundary.plot(ax=ax,edgecolor='black',linewidth=0.1)
 pl = xr.corr(ERA5tn_por_inv, ERA5tm_mean_s_inv, dim="time").plot.contourf()
-plt.savefig("C:/Users/FELIPEOH/ClimatoTempPeru/outputs/ERA5tm_%minp5_inv.png")
+plt.savefig("C:/Users/FELIPEOH/ClimatologiaTempPeru/outputs/ERA5tm_%minp5_inv.png")
 
 ###%max>p95
 ERA5tx_por_files = []
@@ -291,4 +291,4 @@ ERA5tx_por_inv = xr.concat(ERA5tx_por_files, dim="time")
 fig, ax = plt.subplots(figsize=(12,12))
 shp_Peru.boundary.plot(ax=ax,edgecolor='black',linewidth=0.1)
 pl = xr.corr(ERA5tx_por_inv, ERA5tm_mean_s_inv, dim="time").plot.contourf()
-plt.savefig("C:/Users/FELIPEOH/ClimatoTempPeru/outputs/ERA5tm_%maxp95_inv.png")
+plt.savefig("C:/Users/FELIPEOH/ClimatologiaTempPeru/outputs/ERA5tm_%maxp95_inv.png")
